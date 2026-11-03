@@ -1,0 +1,504 @@
+[
+  {
+    "id": "ae68cdba-a690-49bb-a17b-a30911b4599c",
+    "timestamp": "2026-11-03T08:00:16.859Z",
+    "direction": "request",
+    "origin": "client",
+    "message": {
+      "method": "initialize",
+      "params": {
+        "protocolVersion": "2025-11-25",
+        "capabilities": {
+          "sampling": {},
+          "elicitation": {
+            "form": {},
+            "url": {}
+          },
+          "roots": {
+            "listChanged": true
+          },
+          "tasks": {
+            "list": {},
+            "cancel": {},
+            "requests": {
+              "sampling": {
+                "createMessage": {}
+              },
+              "elicitation": {
+                "create": {}
+              }
+            }
+          },
+          "extensions": {
+            "io.modelcontextprotocol/tasks": {},
+            "io.modelcontextprotocol/ui": {
+              "mimeTypes": [
+                "text/html;profile=mcp-app"
+              ],
+              "elicitation": {}
+            },
+            "io.modelcontextprotocol/skills": {}
+          }
+        },
+        "clientInfo": {
+          "name": "mcp-inspector",
+          "version": "2.13.0"
+        }
+      },
+      "jsonrpc": "2.0",
+      "id": 0
+    },
+    "response": {
+      "jsonrpc": "2.0",
+      "id": 0,
+      "result": {
+        "protocolVersion": "2025-11-25",
+        "capabilities": {
+          "experimental": {},
+          "prompts": {
+            "listChanged": false
+          },
+          "resources": {
+            "subscribe": false,
+            "listChanged": false
+          },
+          "tools": {
+            "listChanged": false
+          }
+        },
+        "serverInfo": {
+          "name": "customer-data",
+          "version": "1.30.0"
+        }
+      }
+    },
+    "duration": 1590
+  },
+  {
+    "id": "468626b9-0a47-461a-aa18-e36f2ce2ab0b",
+    "timestamp": "2026-11-03T08:00:18.465Z",
+    "direction": "notification",
+    "origin": "client",
+    "message": {
+      "jsonrpc": "2.0",
+      "method": "notifications/initialized"
+    }
+  },
+  {
+    "id": "e7e0eec4-970f-4f13-aabb-fe1c6881340e",
+    "timestamp": "2026-11-03T08:00:18.514Z",
+    "direction": "request",
+    "origin": "client",
+    "message": {
+      "method": "resources/list",
+      "jsonrpc": "2.0",
+      "id": 1,
+      "params": {
+        "_meta": {
+          "progressToken": 1
+        }
+      }
+    },
+    "response": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "result": {
+        "resources": [
+          {
+            "name": "customers_schema",
+            "uri": "schema://customers",
+            "description": "The schema of the customers table (read-only context for the app).",
+            "mimeType": "text/plain"
+          }
+        ]
+      }
+    },
+    "duration": 328
+  },
+  {
+    "id": "01ab9e9a-38b7-42b1-beaa-a556f29e2fb8",
+    "timestamp": "2026-11-03T08:00:18.515Z",
+    "direction": "request",
+    "origin": "client",
+    "message": {
+      "method": "tools/list",
+      "jsonrpc": "2.0",
+      "id": 2,
+      "params": {
+        "_meta": {
+          "progressToken": 2
+        }
+      }
+    },
+    "response": {
+      "jsonrpc": "2.0",
+      "id": 2,
+      "result": {
+        "tools": [
+          {
+            "name": "describe_data",
+            "description": "Describe the customers table: columns, types, number of rows and 3 example rows. Call this first.",
+            "inputSchema": {
+              "properties": {},
+              "title": "describe_dataArguments",
+              "type": "object"
+            },
+            "outputSchema": {
+              "properties": {
+                "result": {
+                  "title": "Result",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "result"
+              ],
+              "title": "describe_dataOutput",
+              "type": "object"
+            }
+          },
+          {
+            "name": "query_customers",
+            "description": "Run ONE read-only SQL SELECT query on the 'customers' table and return the rows as JSON. Example: SELECT city, AVG(monthly_spend_lkr) FROM customers GROUP BY city",
+            "inputSchema": {
+              "properties": {
+                "sql": {
+                  "title": "Sql",
+                  "type": "string"
+                },
+                "limit": {
+                  "default": 50,
+                  "title": "Limit",
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "sql"
+              ],
+              "title": "query_customersArguments",
+              "type": "object"
+            },
+            "outputSchema": {
+              "properties": {
+                "result": {
+                  "title": "Result",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "result"
+              ],
+              "title": "query_customersOutput",
+              "type": "object"
+            }
+          },
+          {
+            "name": "count_by",
+            "description": "Count customers grouped by one column (for example 'city', 'plan' or 'churned').",
+            "inputSchema": {
+              "properties": {
+                "column": {
+                  "title": "Column",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "column"
+              ],
+              "title": "count_byArguments",
+              "type": "object"
+            },
+            "outputSchema": {
+              "properties": {
+                "result": {
+                  "title": "Result",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "result"
+              ],
+              "title": "count_byOutput",
+              "type": "object"
+            }
+          }
+        ]
+      }
+    },
+    "duration": 511
+  },
+  {
+    "id": "05c43bd7-cff6-452d-a8dd-3b112d9d5914",
+    "timestamp": "2026-11-03T08:00:18.516Z",
+    "direction": "request",
+    "origin": "client",
+    "message": {
+      "method": "prompts/list",
+      "jsonrpc": "2.0",
+      "id": 3,
+      "params": {
+        "_meta": {
+          "progressToken": 3
+        }
+      }
+    },
+    "response": {
+      "jsonrpc": "2.0",
+      "id": 3,
+      "result": {
+        "prompts": [
+          {
+            "name": "analyse_customers",
+            "description": "A ready-made prompt for analysing the customer data.",
+            "arguments": [
+              {
+                "name": "question",
+                "required": true
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "duration": 552
+  },
+  {
+    "id": "2b090b0e-8679-47ae-bb17-fc0eb2f61470",
+    "timestamp": "2026-11-03T08:00:18.516Z",
+    "direction": "request",
+    "origin": "client",
+    "message": {
+      "method": "resources/templates/list",
+      "jsonrpc": "2.0",
+      "id": 4,
+      "params": {
+        "_meta": {
+          "progressToken": 4
+        }
+      }
+    },
+    "response": {
+      "jsonrpc": "2.0",
+      "id": 4,
+      "result": {
+        "resourceTemplates": []
+      }
+    },
+    "duration": 591
+  },
+  {
+    "id": "483bd865-4479-4c36-af55-079387bbc780",
+    "timestamp": "2026-11-03T08:00:56.896Z",
+    "direction": "request",
+    "origin": "client",
+    "message": {
+      "method": "tools/call",
+      "params": {
+        "name": "count_by",
+        "arguments": {
+          "column": "plan"
+        },
+        "_meta": {
+          "progressToken": 5
+        }
+      },
+      "jsonrpc": "2.0",
+      "id": 5
+    },
+    "response": {
+      "jsonrpc": "2.0",
+      "id": 5,
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Basic\": 155, \"Standard\": 106, \"Premium\": 39}"
+          }
+        ],
+        "structuredContent": {
+          "result": "{\"Basic\": 155, \"Standard\": 106, \"Premium\": 39}"
+        },
+        "isError": false
+      }
+    },
+    "duration": 184
+  },
+  {
+    "id": "6fc75daf-7feb-43a9-a2c2-7bf76fe8b45a",
+    "timestamp": "2026-11-03T08:01:17.434Z",
+    "direction": "request",
+    "origin": "client",
+    "message": {
+      "method": "tools/list",
+      "params": {
+        "_meta": {
+          "progressToken": 6
+        }
+      },
+      "jsonrpc": "2.0",
+      "id": 6
+    },
+    "response": {
+      "jsonrpc": "2.0",
+      "id": 6,
+      "result": {
+        "tools": [
+          {
+            "name": "describe_data",
+            "description": "Describe the customers table: columns, types, number of rows and 3 example rows. Call this first.",
+            "inputSchema": {
+              "properties": {},
+              "title": "describe_dataArguments",
+              "type": "object"
+            },
+            "outputSchema": {
+              "properties": {
+                "result": {
+                  "title": "Result",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "result"
+              ],
+              "title": "describe_dataOutput",
+              "type": "object"
+            }
+          },
+          {
+            "name": "query_customers",
+            "description": "Run ONE read-only SQL SELECT query on the 'customers' table and return the rows as JSON. Example: SELECT city, AVG(monthly_spend_lkr) FROM customers GROUP BY city",
+            "inputSchema": {
+              "properties": {
+                "sql": {
+                  "title": "Sql",
+                  "type": "string"
+                },
+                "limit": {
+                  "default": 50,
+                  "title": "Limit",
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "sql"
+              ],
+              "title": "query_customersArguments",
+              "type": "object"
+            },
+            "outputSchema": {
+              "properties": {
+                "result": {
+                  "title": "Result",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "result"
+              ],
+              "title": "query_customersOutput",
+              "type": "object"
+            }
+          },
+          {
+            "name": "count_by",
+            "description": "Count customers grouped by one column (for example 'city', 'plan' or 'churned').",
+            "inputSchema": {
+              "properties": {
+                "column": {
+                  "title": "Column",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "column"
+              ],
+              "title": "count_byArguments",
+              "type": "object"
+            },
+            "outputSchema": {
+              "properties": {
+                "result": {
+                  "title": "Result",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "result"
+              ],
+              "title": "count_byOutput",
+              "type": "object"
+            }
+          }
+        ]
+      }
+    },
+    "duration": 274
+  },
+  {
+    "id": "6b89f2a3-a54e-49ae-ad12-122a0e66277e",
+    "timestamp": "2026-11-03T08:01:17.436Z",
+    "direction": "request",
+    "origin": "client",
+    "message": {
+      "method": "prompts/list",
+      "params": {
+        "_meta": {
+          "progressToken": 7
+        }
+      },
+      "jsonrpc": "2.0",
+      "id": 7
+    },
+    "response": {
+      "jsonrpc": "2.0",
+      "id": 7,
+      "result": {
+        "prompts": [
+          {
+            "name": "analyse_customers",
+            "description": "A ready-made prompt for analysing the customer data.",
+            "arguments": [
+              {
+                "name": "question",
+                "required": true
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "duration": 357
+  },
+  {
+    "id": "fb897a23-cbf5-4726-8a88-fc32a4af0e2c",
+    "timestamp": "2026-11-03T08:01:17.439Z",
+    "direction": "request",
+    "origin": "client",
+    "message": {
+      "method": "resources/list",
+      "params": {
+        "_meta": {
+          "progressToken": 8
+        }
+      },
+      "jsonrpc": "2.0",
+      "id": 8
+    },
+    "response": {
+      "jsonrpc": "2.0",
+      "id": 8,
+      "result": {
+        "resources": [
+          {
+            "name": "customers_schema",
+            "uri": "schema://customers",
+            "description": "The schema of the customers table (read-only context for the app).",
+            "mimeType": "text/plain"
+          }
+        ]
+      }
+    },
+    "duration": 397
+  }
+]
