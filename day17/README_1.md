@@ -86,6 +86,11 @@ When it answered **without** a tool call, it invented numbers (e.g. "Basic churn
 Full details: [Day17_Report_Multi_Agent.pdf](Day17_Report_Multi_Agent.pdf)
 
 ---
+ Office server running on port 8050
+
+🔒 Colab link (only you): https://8050-m-s-use1c7-1hglurxd65qk2-c.us-east1.prod.r.colab.dev
+🌍 Public link (share it): https://candidates-advancement-hay-lambda.trycloudflare.com
+
 
 ## Repository contents
 
