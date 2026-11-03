@@ -1,0 +1,18 @@
+# secrets
+.env
+*.key
+claude_desktop_config.json
+
+# logs and traces
+*.log
+*.jsonl
+outbox.txt
+agent_files/
+agent_memory.json
+
+# real data (keep only synthetic data in the repo)
+customers.csv
+
+# Python
+__pycache__/
+.ipynb_checkpoints/
